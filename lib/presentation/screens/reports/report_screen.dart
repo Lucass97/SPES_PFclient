@@ -80,15 +80,7 @@ class _ReportScreenState extends State<ReportScreen> {
                             onRefresh();
                           }
                         }
-                      }),
-                  BlocListener(
-                    bloc: BlocProvider.of<ReportsBloc>(context),
-                    listener: (BuildContext context, ReportsState state) {
-                      if (state is FailFetchedReportsInfoState) {
-                        Navigator.pushNamed(context, LoginScreen.routeName);
-                      }
-                    },
-                  )
+                      })
                 ],
                 child: BlocBuilder<ReportsBloc, ReportsState>(
                     builder: (BuildContext context, ReportsState state) {

@@ -59,14 +59,6 @@ class _PermissionScreenState extends State<PermissionScreen> {
                             .add(FetchPermissionsEvent());
                       }
                     },
-                  ),
-                  BlocListener(
-                    bloc: BlocProvider.of<PermissionsBloc>(context),
-                    listener: (BuildContext context, PermissionsState state) {
-                      if (state is FailFetchedPermissionsState) {
-                        Navigator.pushNamed(context, LoginScreen.routeName);
-                      }
-                    },
                   )
                 ],
                 child: BlocBuilder<PermissionsBloc, PermissionsState>(

@@ -22,18 +22,20 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context, true);
-              },
-              icon:
-                  const Icon(Icons.arrow_back, size: 30, color: Colors.white)),
-        ),
-        body: Center(
-          child: SfPdfViewer.memory(widget.bytes),
-        ));
+    return WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+            appBar: AppBar(
+              title: Text(widget.title),
+              leading: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context, true);
+                  },
+                  icon: const Icon(Icons.arrow_back,
+                      size: 30, color: Colors.white)),
+            ),
+            body: Center(
+              child: SfPdfViewer.memory(widget.bytes),
+            )));
   }
 }

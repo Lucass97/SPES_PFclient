@@ -18,7 +18,7 @@ import 'package:SPES_PFclient/services/token_storage.dart';
 
 class Openapi {
   //static const String basePath = r'http://10.0.2.2:8080';
-  static const String basePath = r'http://192.168.1.52:8080';
+  static const String basePath = r'https://spes-server.econlus.com/';
 
   final Dio dio;
   final Serializers serializers;

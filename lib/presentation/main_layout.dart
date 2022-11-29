@@ -60,45 +60,47 @@ class _MainLayoutState extends State<MainLayout> {
       const Icon(Iconic.user, size: 30)
     ];
 
-    return Scaffold(
-      extendBody: true,
-      backgroundColor: const Color.fromARGB(255, 239, 243, 245),
-      body: PageView(
-        controller: pageController,
-        onPageChanged: onPageChanged,
-        physics: const BouncingScrollPhysics(),
-        children: screens,
-      ),
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: Color.fromARGB(255, 60, 97, 112),
-              blurRadius: 50,
-            ),
-          ],
-        ),
-        child: Theme(
-          data: Theme.of(context).copyWith(
-              iconTheme:
-                  const IconThemeData(color: Color.fromARGB(255, 60, 97, 112))),
-          child: CurvedNavigationBar(
-            animationCurve: Curves.easeInOut,
-            animationDuration: const Duration(milliseconds: 300),
-            backgroundColor: Colors.transparent,
-            color: const Color.fromARGB(255, 246, 252, 255),
-            height: 65,
-            items: items,
-            index: _page,
-            onTap: (index) {
-              setState(() {
-                _page = index;
-                navigationTapped(index);
-              });
-            },
+    return WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          extendBody: true,
+          backgroundColor: const Color.fromARGB(255, 239, 243, 245),
+          body: PageView(
+            controller: pageController,
+            onPageChanged: onPageChanged,
+            physics: const BouncingScrollPhysics(),
+            children: screens,
           ),
-        ),
-      ),
-    );
+          bottomNavigationBar: Container(
+            decoration: const BoxDecoration(
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  color: Color.fromARGB(255, 60, 97, 112),
+                  blurRadius: 50,
+                ),
+              ],
+            ),
+            child: Theme(
+              data: Theme.of(context).copyWith(
+                  iconTheme: const IconThemeData(
+                      color: Color.fromARGB(255, 60, 97, 112))),
+              child: CurvedNavigationBar(
+                animationCurve: Curves.easeInOut,
+                animationDuration: const Duration(milliseconds: 300),
+                backgroundColor: Colors.transparent,
+                color: const Color.fromARGB(255, 246, 252, 255),
+                height: 65,
+                items: items,
+                index: _page,
+                onTap: (index) {
+                  setState(() {
+                    _page = index;
+                    navigationTapped(index);
+                  });
+                },
+              ),
+            ),
+          ),
+        ));
   }
 }

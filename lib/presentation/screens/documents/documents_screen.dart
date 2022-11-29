@@ -81,14 +81,6 @@ class _DocumentScreenState extends State<DocumentScreen> {
                           }
                         }
                       }),
-                  BlocListener(
-                    bloc: BlocProvider.of<DocsBloc>(context),
-                    listener: (BuildContext context, DocsState state) {
-                      if (state is FailFetchedDocsState) {
-                        Navigator.pushNamed(context, LoginScreen.routeName);
-                      }
-                    },
-                  )
                 ],
                 child: BlocBuilder<DocsBloc, DocsState>(
                     builder: (BuildContext context, DocsState state) {
